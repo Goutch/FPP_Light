@@ -16,7 +16,8 @@ public class PlayerInputs : MonoBehaviour
     private void Start()
     {
         avatars = GetComponentsInChildren<PlayerController>();
-        avatarIndex = 0;
+        avatars[0].gameObject.SetActive(false);
+        avatarIndex = 1;
     }
 
     // Update is called once per frame
@@ -40,20 +41,20 @@ public class PlayerInputs : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            avatars[avatarIndex].GetComponent<SpriteRenderer>().enabled = false;
-            if (avatarIndex == 0)
-                avatarIndex = 1;
-            else
-            {
-                avatarIndex = 0;
-            }
-            avatars[avatarIndex].GetComponent<SpriteRenderer>().enabled = true;
+            SwitchAvatar();
         }
         
     }
 
     private void SwitchAvatar()
     {
-        
+        avatars[avatarIndex].gameObject.SetActive(false);
+        if (avatarIndex == 0)
+            avatarIndex = 1;
+        else
+        {
+            avatarIndex = 0;
+        }
+        avatars[avatarIndex].gameObject.SetActive(true);
     }
 }

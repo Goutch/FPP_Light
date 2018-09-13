@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReaperController : MonoBehaviour ,IPlayer{
+public class ReaperController : PlayerController{
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +16,7 @@ public class ReaperController : MonoBehaviour ,IPlayer{
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Lights")
+		if (other.tag == "Lights")
 		{
 			
 		}
@@ -24,9 +24,14 @@ public class ReaperController : MonoBehaviour ,IPlayer{
 
 	private void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Darkness")
+		if (other.tag == "Darkness")
 		{
 			
 		}
+	}
+
+	public override void Dash()
+	{
+		
 	}
 }

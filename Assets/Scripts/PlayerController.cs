@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour
 	private SpriteRenderer renderer;
 	
 	// Use this for initialization
-	void Start ()
+	private void Awake()
 	{
+	
 		rigidbody = GetComponentInParent<Rigidbody2D>();
 		renderer = GetComponent<SpriteRenderer>();
 	}
@@ -37,5 +38,10 @@ public class PlayerController : MonoBehaviour
 	public void Jump()
 	{
 		rigidbody.AddForce(Vector2.up*jumpForce,ForceMode2D.Impulse);
+	}
+
+	public virtual void Dash()
+	{
+		
 	}
 }

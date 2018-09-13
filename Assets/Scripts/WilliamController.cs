@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WilliamController : MonoBehaviour , IPlayer {
+public class WilliamController :PlayerController {
 
 	// Use this for initialization
 	void Start () {
