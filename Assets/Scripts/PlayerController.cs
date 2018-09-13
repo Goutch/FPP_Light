@@ -10,21 +10,28 @@ public class PlayerController : MonoBehaviour
 
 	private bool jumping=false;
 	private Rigidbody2D rigidbody;
+	private SpriteRenderer renderer;
+	
 	// Use this for initialization
 	void Start ()
 	{
-		rigidbody = GetComponent<Rigidbody2D>();
-	
+		rigidbody = GetComponentInParent<Rigidbody2D>();
+		renderer = GetComponent<SpriteRenderer>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void Move(int dir)
 	{
-		transform.Translate(Vector2.right*dir*Time.deltaTime);
+		
+		if (dir == -1)
+		{
+			renderer.flipX = true;
+		}
+		else
+		{
+			renderer.flipX = false;
+		}
+		transform.root.Translate(Vector2.right*dir*speed*Time.deltaTime);
 	}
 
 	public void Jump()
