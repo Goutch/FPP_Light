@@ -17,7 +17,7 @@ public class PlayerInputs : MonoBehaviour
     private int avatarIndex;
 
     private float timeSinceLastInLight = 0;
-    private float timeWithoutLightLimit = 0.5f;
+    private float timeWithoutLightLimit = 0.05f;
 
     private void Start()
     {

@@ -41,6 +41,9 @@ public class Light : MonoBehaviour
                     Physics2D.Raycast(transform.position, new Vector2(
                         LightTrigger.Instance.transform.position.x - transform.position.x,
                         LightTrigger.Instance.transform.position.y - transform.position.y), radius);
+                Debug.DrawRay(transform.position, new Vector2(
+                    LightTrigger.Instance.transform.position.x - transform.position.x,
+                    LightTrigger.Instance.transform.position.y - transform.position.y),Color.green);
                 if (hit.collider != null)
                 {
                     if (hit.collider.tag == "Avatar")
