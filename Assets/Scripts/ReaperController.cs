@@ -30,8 +30,5 @@ public class ReaperController : PlayerController{
 		}
 	}
 
-	public override void Dash()
-	{
-		
-	}
+
 }

@@ -1,60 +1,82 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using LOS.Event;
 using UnityEngine;
 
 public class PlayerInputs : MonoBehaviour
 {
-    [SerializeField] private KeyCode moveLeftKey;
+    [SerializeField] private KeyCode moveLeftKey = KeyCode.A;
 
-    [SerializeField] private KeyCode moveRightKey;
+    [SerializeField] private KeyCode moveRightKey = KeyCode.D;
 
-    [SerializeField] private KeyCode jumpKey;
+    [SerializeField] private KeyCode jumpKey = KeyCode.Space;
+
+    [SerializeField] private KeyCode DashKey = KeyCode.LeftShift;
 
     private PlayerController[] avatars;
     private int avatarIndex;
 
+    private float timeSinceLastInLight = 0;
+    private float timeWithoutLightLimit = 0.5f;
+
     private void Start()
     {
+        LightTrigger.Instance.InLight += InLight;
         avatars = GetComponentsInChildren<PlayerController>();
-        avatars[0].gameObject.SetActive(false);
-        avatarIndex = 1;
+        avatarIndex = 0;
+        SwitchAvatar(1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(jumpKey))
+        if (avatars[avatarIndex].isDashing == false)
         {
-            
-            avatars[avatarIndex].Jump();
+            if (timeSinceLastInLight < Time.time - timeWithoutLightLimit)
+                SwitchAvatar(0);
+            else
+            {
+                SwitchAvatar(1);
+            }
+
+            if (Input.GetKeyDown(jumpKey))
+            {
+                avatars[avatarIndex].Jump();
+            }
+
+
+            if (Input.GetKey(moveRightKey))
+            {
+                avatars[avatarIndex].Move(1);
+            }
+
+            if (Input.GetKey(moveLeftKey))
+            {
+                avatars[avatarIndex].Move(-1);
+            }
         }
 
-        if (Input.GetKey(moveRightKey))
+        if (Input.GetKeyDown(DashKey) && avatars[avatarIndex].canDash)
         {
-            avatars[avatarIndex].Move(1);
+            avatars[avatarIndex].Dash();
         }
-
-        if (Input.GetKey(moveLeftKey))
-        {
-            avatars[avatarIndex].Move(-1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SwitchAvatar();
-        }
-        
     }
 
-    private void SwitchAvatar()
+    public void SwitchAvatar(int index)
     {
-        avatars[avatarIndex].gameObject.SetActive(false);
-        if (avatarIndex == 0)
-            avatarIndex = 1;
-        else
+        if (index != avatarIndex)
         {
-            avatarIndex = 0;
+            avatars[avatarIndex].GetComponent<SpriteRenderer>().enabled = false;
+            avatars[avatarIndex].GetComponent<BoxCollider2D>().enabled = false;
+            avatarIndex = index;
+            avatars[avatarIndex].GetComponent<BoxCollider2D>().enabled = true;
+            avatars[avatarIndex].GetComponent<SpriteRenderer>().enabled = true;
         }
-        avatars[avatarIndex].gameObject.SetActive(true);
+    }
+
+    private void InLight()
+    {
+        if (!avatars[avatarIndex].isDashing)
+            timeSinceLastInLight = Time.time;
     }
 }

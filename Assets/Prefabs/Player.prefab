@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 4365570266696508}
   - component: {fileID: 50496289956159576}
   - component: {fileID: 114817839211207586}
+  - component: {fileID: 114981930277795506}
   m_Layer: 1
   m_Name: Player
   m_TagString: Untagged
@@ -71,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127733243351690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.22, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4365570266696508}
@@ -84,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217271557597178}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.22, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4365570266696508}
@@ -188,6 +189,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 3
   speed: 3
+  dashDurationInSecond: 0.1
+  dashSpeed: 16
+  dashCooldownInSeconds: 3
+  isDashing: 0
+  canDash: 1
+  isJumping: 0
+  canJump: 1
 --- !u!114 &114817839211207586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,6 +210,7 @@ MonoBehaviour:
   moveLeftKey: 97
   moveRightKey: 100
   jumpKey: 32
+  DashKey: 304
 --- !u!114 &114927628873768690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,6 +224,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 3
   speed: 3
+  dashDurationInSecond: 0.3
+  dashSpeed: 10
+  dashCooldownInSeconds: 3
+  isDashing: 0
+  canDash: 1
+  isJumping: 0
+  canJump: 1
+--- !u!114 &114981930277795506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1571499338093530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a0cb6c5aedf4b22a2e7102a5e65fe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212712451123458422
 SpriteRenderer:
   m_ObjectHideFlags: 1

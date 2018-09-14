@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114601691727470662}
   - component: {fileID: 33578570611407988}
   - component: {fileID: 23968672190534190}
+  - component: {fileID: 114894079706935930}
   m_Layer: 9
   m_Name: Radial Light
   m_TagString: Untagged
@@ -107,6 +108,25 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 2e91f08796cbd44849f1e15382cade3d, type: 2}
   orderInLayer: 44
   sortingLayer: 6
-  radius: 0
+  radius: 20
   flashFrequency: 0
   flashOffset: 0
+--- !u!114 &114894079706935930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024358234400568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a991be814e944eb8f1cd3d72247261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSource: {fileID: 114601691727470662}
+  triggerLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  distance: 20

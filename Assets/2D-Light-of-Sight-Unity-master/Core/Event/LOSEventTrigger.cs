@@ -31,7 +31,6 @@ namespace LOS.Event {
 		}
 
 		void Start () {
-			NotTriggered();
 		}
 
 		void OnEnable () {
